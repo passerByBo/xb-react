@@ -50,5 +50,29 @@ commitlint 集成到husky中 npx husky add .husky/commit-msg "npx --no-install c
 - test：添加一些测试 代码
 
 
+配置tsconfig.json文件，增加配置
+
+打包工具，简洁 打包产物可读性比较强 
+pnpm i rollup -D -w 
+
+JSX转换
+编译时
+运行时
 
 
+实现打包流程
+
+
+解析package.json文件获取公共的配置
+
+rollup-plugin-typescript2
+@rollup/plugin-commonjs
+
+
+删除上一次打包的产物 pnpm i -D -w rimraf
+
+生成packagejson文件 rollup-plugin-generate-package-json
+
+
+pnpm link --global  全局路径下的react就指向了dist/node_modules下的react
+pnpm link react --global 将项目中的react依赖指向全局
