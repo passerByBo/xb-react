@@ -27,6 +27,10 @@
         "prettier/prettier": "error",
         "no-case-delclarations": "off",
         "no-constant-condition": "off",
-        "@typescript-eslint/ban-ts-comment": "off"
+        "@typescript-eslint/ban-ts-comment": "off",
+        // any的检测 后续可以打开
+        "@typescript-eslint/no-explicit-any": [
+            "off"
+        ]
     }
 }

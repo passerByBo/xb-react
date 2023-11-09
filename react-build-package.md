@@ -76,3 +76,38 @@ rollup-plugin-typescript2
 
 pnpm link --global  全局路径下的react就指向了dist/node_modules下的react
 pnpm link react --global 将项目中的react依赖指向全局
+
+
+## Reconciler协调器
+过程驱动变为状态驱动
+运行时核心模块 Reconciler 和 Render
+描述UI JSX 模板语法
+react没有编译优化
+vue有编译优化 
+react是纯运行时的前端框架
+
+虚拟dom在react中的实现 fiberNode
+
+ReactELement - FiberNode - DomElement
+
+工作方式
+对于同一个节点，比较其ReactElement与FiberNode，生成子fiberNode，并根据比较的结果生成不同标记（插入、删除、移动）对应不同宿主环境API的执行
+
+placement 插入
+deletion placement
+
+两棵树 current workinProgress->根据标记调用宿主环境api后  变为current
+
+
+DFS深度优先遍历
+
+递归的过程存在递和归两个阶段
+- 递：对应beginWork
+- 归：对应completeWork
+
+
+workLoop 调度
+
+并发更新
+updateQueue
+
