@@ -42,9 +42,18 @@ function renderRoot(root: FiberNode) {
 			workLoop();
 			break;
 		} catch (e) {
-			console.error('workLoop发生错误', e);
+			if (__DEV__) {
+				console.error('workLoop发生错误', e);
+			}
 		}
 	} while (true);
+
+	// 最终生成的树
+	const finishedWork = root.current.alternate;
+	root.finishedWork = finishedWork;
+
+	// wip fiberNode树 根据树中的flag执行对应的dom操作
+	commitRoot(root);
 }
 
 function workLoop() {

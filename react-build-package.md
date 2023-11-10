@@ -110,4 +110,23 @@ workLoop 调度
 
 并发更新
 updateQueue
+// 结构变化
+placement
+childDeleting
+// 属性变化
+update
+
+
+开发环境增加__DEV__标识
+
+@rollup/plugin-replace
+
+beginWork阶段的性能优化策略，构造一个离屏的dom树  将要更新的顶级父节点进行一次placement
+
+completeWork阶段
+对于Host类型的fiberNode构建离屏DOM树
+标记Update flag
+
+completeWork性能优化
+flags根本在不同的fiberNode中，利用completeWork 向上遍历的流程将子fiberNode 中的flags冒泡到父fiberNode
 
