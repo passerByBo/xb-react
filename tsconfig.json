@@ -8,6 +8,7 @@
             "ESNext",
             "DOM"
         ],
+        "strictNullChecks": true,
         "moduleResolution": "Node",
         "strict": true,
         "sourceMap": true,
@@ -18,6 +19,7 @@
         "noUnusedLocals": true,
         "noUnusedParameters": true,
         "noImplicitReturns": false,
+        "noImplicitThis": false,
         "skipLibCheck": true,
         "baseUrl": "./packages",
         "paths": {
