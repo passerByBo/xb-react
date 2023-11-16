@@ -59,3 +59,7 @@ function minimuLength<Type extends { length: number }>(
 		return { length: minimum };
 	}
 }
+
+// 推断过程和传入和绑定的值相关 优先级高于后
+const m1 = minimuLength([1, 2, 3], 6);
+const m2 = minimuLength('heool', 6);
