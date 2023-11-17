@@ -1,39 +1,59 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
+	<body>
+		<script>
+			/**
+			 * @param {number[]} nums
+			 * @param {number} val
+			 * @return {number}
+			 */
+			// function removeElement(nums, val) {
+			//     let left = 0,
+			//         right = nums.length - 1;
+			//     while (left <= right) {
+			//         if (nums[left] === val) {
+			//             nums[left] = nums[right]
+			//             nums[right] = 0
+			//             right--
+			//         } else {
+			//             left++
+			//         }
+			//     }
+			//     nums.length = right + 1
+			//     return nums.length
+			// };
 
-<body>
-    <script>
-        /**
- * @param {number[]} nums
- * @param {number} val
- * @return {number}
- */
-        function removeElement(nums, val) {
-            let left = 0,
-                right = nums.length - 1;
-            while (left <= right) {
-                if (nums[left] === val) {
-                    nums[left] = nums[right]
-                    nums[right] = 0
-                    right--
-                } else {
-                    left++
-                }
-            }
-            nums.length = right + 1
-            return nums.length
-        };
+			// removeElement([3,2,2,3], 3)
 
+			/**
+			 * @param {number[]} nums
+			 * @return {number}
+			 */
+			// var removeDuplicates = function (nums) {
+			// 	let slow = 0,
+			// 		fast = 1;
+			// 	while (fast !== nums.length) {
+			// 		if (nums[slow] !== nums[fast]) {
+			// 			slow++;
+			// 			nums[slow] = nums[fast];
+			// 			fast++;
+			// 		} else {
+			// 			fast++;
+			// 		}
+			// 	}
 
-        removeElement([3,2,2,3], 3)
-    </script>
-</body>
+			// 	nums.length = slow + 1
+			// 	console.log(nums)
+			// };
 
+			// removeDuplicates([0, 0, 1, 1, 1, 2, 2, 3, 3, 4]);
+		</script>
+	</body>
 </html>
