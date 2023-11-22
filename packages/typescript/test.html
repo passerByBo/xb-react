@@ -49,11 +49,99 @@
 			// 		}
 			// 	}
 
-			// 	nums.length = slow + 1
-			// 	console.log(nums)
+			// 	nums.length = slow + 1;
+			// 	console.log(nums);
 			// };
 
 			// removeDuplicates([0, 0, 1, 1, 1, 2, 2, 3, 3, 4]);
+
+			// 摩尔投票算法 计算众数大于百分之五十的
+
+			/**
+			 * @param {number[]} nums
+			 * @return {number}
+			 */
+			// var majorityElement = function (nums) {
+			// 	let count = 0,
+			// 		res;
+
+			// 	for (let i = 0; i < nums.length; i++) {
+			// 		if (res === nums[0]) {
+			// 			count++;
+			// 			continue;
+			// 		}
+			// 		if (count === 0) {
+			// 			res = nums[i];
+			// 			count++;
+			// 		} else {
+			// 			count--;
+			// 		}
+			// 	}
+
+			// 	return res;
+			// };
+
+			/**
+			 * @param {number[]} nums
+			 * @param {number} k
+			 * @return {void} Do not return anything, modify nums in-place instead.
+			 */
+			// var rotate = function (nums, k) {
+			// 	// 方法1
+			// 	// let i = 0
+			// 	// while (i < k) {
+			// 	//     const last = nums.pop()
+			// 	//     nums.unshift(last)
+			// 	//     i++;
+			// 	// }
+			//     // 方法2
+			// 	const len = nums.length
+			// 	k = k % len
+
+			// 	let cur = 0;
+			// 	let next = (cur + k) % len;
+			// 	let count = 0
+			// 	let cache =  nums[cur];
+			// 	while(count < len){
+			// 		cache = nums[next]
+			// 		nums[next] = nums[cur];
+			// 		cur = next
+			// 		next = (cur + k) % len;
+			// 		count++
+			// 	}
+			// 	console.log('rotate',nums)
+			// };
+
+			// rotate([1,2,3,4,5,6,7], 3)
+			// [1, 2, 3, 4, 5, 6, 7]
+			// [5, 6, 7, 1, 2, 3, 4]
+
+			/**
+			 * @param {number[]} prices
+			 * @return {number}
+			 */
+			var maxProfit = function (prices) {
+				let min = Infinity;
+				let max = -1;
+				let cache = 0;
+				for (let i = 0; i < prices.length; i++) {
+					if (prices[i] <= min) {
+						if (max !== -1) {
+							cache = cache < max - min ? max- min : cache;
+							max = -1;
+						}
+						min = prices[i];
+					} else if (prices[i] >= max) {
+						max = prices[i];
+					}
+				}
+				return max - min > cache ? max - min : cache;
+			};
+
+			// console.log(maxProfit([7, 1, 5, 3, 6, 4]));
+			// console.log(maxProfit([1, 2]));
+			// console.log(maxProfit([2, 4, 1]));
+			console.log(maxProfit([3, 2, 6, 5, 0, 3]));
 		</script>
 	</body>
 </html>
