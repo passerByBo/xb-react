@@ -120,28 +120,114 @@
 			 * @param {number[]} prices
 			 * @return {number}
 			 */
-			var maxProfit = function (prices) {
-				let min = Infinity;
-				let max = -1;
-				let cache = 0;
-				for (let i = 0; i < prices.length; i++) {
-					if (prices[i] <= min) {
-						if (max !== -1) {
-							cache = cache < max - min ? max- min : cache;
-							max = -1;
-						}
-						min = prices[i];
-					} else if (prices[i] >= max) {
-						max = prices[i];
-					}
-				}
-				return max - min > cache ? max - min : cache;
-			};
+			// var maxProfit = function (prices) {
+			// 	let min = Infinity;
+			// 	let max = -1;
+			// 	let cache = 0;
+			// 	for (let i = 0; i < prices.length; i++) {
+			// 		if (prices[i] <= min) {
+			// 			if (max !== -1) {
+			// 				cache = cache < max - min ? max- min : cache;
+			// 				max = -1;
+			// 			}
+			// 			min = prices[i];
+			// 		} else if (prices[i] >= max) {
+			// 			max = prices[i];
+			// 		}
+			// 	}
+			// 	return max - min > cache ? max - min : cache;
+			// };
 
 			// console.log(maxProfit([7, 1, 5, 3, 6, 4]));
 			// console.log(maxProfit([1, 2]));
 			// console.log(maxProfit([2, 4, 1]));
-			console.log(maxProfit([3, 2, 6, 5, 0, 3]));
+			// console.log(maxProfit([3, 2, 6, 5, 0, 3]));
+
+			// 反转链表
+			/**
+			 * Definition for singly-linked list.
+			 * function ListNode(val, next) {
+			 *     this.val = (val===undefined ? 0 : val)
+			 *     this.next = (next===undefined ? null : next)
+			 * }
+			 */
+			/**
+			 * @param {ListNode} head
+			 * @return {ListNode}
+			 */
+
+			// function ListNode(val, next) {
+			// 	this.val = val === undefined ? 0 : val;
+			// 	this.next = next === undefined ? null : next;
+			// }
+			// const n5 = new ListNode(5, null);
+			// const n4 = new ListNode(4, n5);
+			// const n3 = new ListNode(3, n4);
+			// const n2 = new ListNode(2, n3);
+			// const n1 = new ListNode(1, n2);
+			// var reverseList = function (head) {
+			// 	if (!head) return head;
+			// 	// 1->2->3->4->5
+			// 	let cur = head.next;
+			// 	head.next = null;
+			// 	let pre = head;
+			// 	while (cur) {
+			// 		const next = cur.next;
+			// 		cur.next = pre;
+			// 		pre = cur;
+			// 		cur = next;
+			// 	}
+
+			// 	return pre;
+			// };
+
+			// reverseList(n1);
+			// console.log(n5);
+
+			/**
+			 * @param {ListNode} node
+			 * @return {void} Do not return anything, modify node in-place instead.
+			 */
+			// var deleteNode = function (node) {
+			// 	node.val = node.next.val;
+			//     node.next = node.next.next;
+			// };
+
+			// reverseList(n1);
+			/**
+			 * Definition for singly-linked list.
+			 * function ListNode(val, next) {
+			 *     this.val = (val===undefined ? 0 : val)
+			 *     this.next = (next===undefined ? null : next)
+			 * }
+			 */
+			/**
+			 * @param {ListNode} l1
+			 * @param {ListNode} l2
+			 * @return {ListNode}
+			 */
+
+			// 输入：l1 = [9,9,9,9,9,9,9], l2 = [9,9,9,9]
+			// 输出：[8,9,9,9,0,0,0,1]
+
+			// 输入：l1 = [2,4,3], l2 = [5,6,4]
+			// 输出：[7,0,8]
+			// 解释：342 + 465 = 807.
+			var addTwoNumbers = function (l1, l2) {
+				let carry = 0;
+				let res = new NodeList()
+				let cur = res
+				while (l1 || l2 || carry) {
+					const sum = (l1 ? l1.val : 0) + (l2 ? l2.val : 0) + carry
+					carry = sum >= 10 ? 1 : 0;
+					cur.next = new NodeList(sum % 10)
+					cur = cur.next
+					l1 = l1 ? l1.next : l1
+					l2 = l2 ? l2.next : l2
+				}
+
+				return res.next;
+			};
 		</script>
 	</body>
 </html>

@@ -23,6 +23,7 @@
 		"eslint-plugin-prettier": "^5.0.1",
 		"husky": "^8.0.3",
 		"prettier": "^3.0.3",
+		"reflect-metadata": "^0.1.13",
 		"rimraf": "^5.0.5",
 		"rollup": "^4.3.0",
 		"rollup-plugin-generate-package-json": "^3.2.0",

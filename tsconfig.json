@@ -13,7 +13,8 @@
         "strict": true,
         "sourceMap": true,
         "resolveJsonModule": true,
-        "isolatedModules": true,
+        // 全局重复
+        "isolatedModules": false,
         "esModuleInterop": true,
         "noEmit": true,
         "noUnusedLocals": true,
@@ -21,6 +22,7 @@
         "noImplicitReturns": false,
         "noImplicitThis": false,
         "skipLibCheck": true,
+        "experimentalDecorators": true,
         "baseUrl": "./packages",
         "paths": {
             "hostConfig": ["./react-reconciler/src/hostConfig.ts"]

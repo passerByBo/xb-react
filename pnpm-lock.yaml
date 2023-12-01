@@ -44,6 +44,9 @@ importers:
       prettier:
         specifier: ^3.0.3
         version: 3.0.3
+      reflect-metadata:
+        specifier: ^0.1.13
+        version: 0.1.13
       rimraf:
         specifier: ^5.0.5
         version: 5.0.5
@@ -9768,6 +9771,10 @@ packages:
     dependencies:
       indent-string: 4.0.0
       strip-indent: 3.0.0
+
+  /reflect-metadata@0.1.13:
+    resolution: {integrity: sha512-Ts1Y/anZELhSsjMcU605fU9RE4Oi3p5ORujwbIKXfWa+0Zxs510Qrmrce5/Jowq3cHSZSJqBjypxmHarc+vEWg==}
+    dev: true
 
   /reflect.getprototypeof@1.0.4:
     resolution: {integrity: sha512-ECkTw8TmJwW60lOTR+ZkODISW6RQ8+2CL3COqtiJKLd6MmB45hN51HprHFziKLGkAuTGQhBb91V8cy+KHlaCjw==}
