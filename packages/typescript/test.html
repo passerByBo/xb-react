@@ -213,21 +213,58 @@
 			// 输入：l1 = [2,4,3], l2 = [5,6,4]
 			// 输出：[7,0,8]
 			// 解释：342 + 465 = 807.
-			var addTwoNumbers = function (l1, l2) {
-				let carry = 0;
-				let res = new NodeList()
-				let cur = res
-				while (l1 || l2 || carry) {
-					const sum = (l1 ? l1.val : 0) + (l2 ? l2.val : 0) + carry
-					carry = sum >= 10 ? 1 : 0;
-					cur.next = new NodeList(sum % 10)
-					cur = cur.next
-					l1 = l1 ? l1.next : l1
-					l2 = l2 ? l2.next : l2
+			// var addTwoNumbers = function (l1, l2) {
+			// 	let carry = 0;
+			// 	let res = new NodeList()
+			// 	let cur = res
+			// 	while (l1 || l2 || carry) {
+			// 		const sum = (l1 ? l1.val : 0) + (l2 ? l2.val : 0) + carry
+			// 		carry = sum >= 10 ? 1 : 0;
+			// 		cur.next = new NodeList(sum % 10)
+			// 		cur = cur.next
+			// 		l1 = l1 ? l1.next : l1
+			// 		l2 = l2 ? l2.next : l2
+			// 	}
+
+			// 	return res.next;
+			// };
+
+			// 借助于set
+			/**
+			 * @param {number[]} nums1
+			 * @param {number[]} nums2
+			 * @return {number[]}
+			 */
+			var intersection = function (nums1, nums2) {
+				const set = new Set(nums1)
+				const res = []
+				for(let item of nums2){
+					if(set.has(item)){
+						set.delete(item)
+						res.push(item)
+					}
 				}
 
-				return res.next;
+				return res
 			};
+			// 借助于map
+			/**
+			 * @param {number[]} nums
+			 * @param {number} target
+			 * @return {number[]}
+			 */
+			var twoSum = function (nums, target) {
+				const map = new Map();
+				for (let i = 0; i < nums.length; i++) {
+					if (map.has(target - nums[i])) {
+						return [map.get(target - nums[i]), i];
+					} else {
+						map.set(nums[i], i);
+					}
+				}
+			};
+
+			console.log(twoSum([2, 7, 11, 15], 9));
 		</script>
 	</body>
 </html>

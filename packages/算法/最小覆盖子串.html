@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+	<body>
+		<script>
+			//输入：s = " ODEBANC", t = "ABC"
+			// 输出："BANC"
+			// 解释：最小覆盖子串 "BANC" 包含来自字符串 t 的 'A'、'B' 和 'C'。
+			// 输入：s = "a", t = "a"
+			// 输出："a"
+			// 解释：整个字符串 s 是最小覆盖子串。
+
+			// 输入: s = "a", t = "aa"
+			// 输出: ""
+			// 解释: t 中两个字符 'a' 均应包含在 s 的子串中，
+			// 因此没有符合条件的子字符串，返回空字符串。
+			/**
+			 * @param {string} s
+			 * @param {string} t
+			 * @return {string}
+			 */
+			var minWindow = function (s, t) {
+				const map = {};
+				// 循环遍历，这里因为不需要保证子串的顺序 只需要计数即可
+				for (let c of t) {
+					map[c] = map[c] ? ++map[c] : 1;
+				}
+				// 左右滑动窗口指针
+				let left = 0,
+					right = 0;
+
+				// 保存当前字符数量
+				let count = Object.keys(map).length;
+
+				let minLen = Infinity,
+					minStart = 0;
+
+				while (right < s.length) {
+					const c = s[right];
+					// 右指针向右查询字符串 是否存在子字符串中的内容
+					if (map[c] !== undefined) {
+						// 查到了子串的内容计算减一
+						map[c]--;
+						// 如果当前类型的字符串剩余匹配数量为0字符类型数量减一
+						if (map[c] === 0) count--;
+					}
+					right++;
+					// 当前left和right之间的字符串已经包含了全部子串的内容
+					while (count === 0) {
+						// 默认minLen为infinity所以第一次匹配后就会进入这里的逻辑
+						if (right - left < minLen) {
+							// 取更小的子串长度 赋值给minLen
+							minLen = right - left;
+							minStart = left;
+						}
+						// 缩小滑动窗口
+						const c = s[left];
+						if (map[c] !== undefined) {
+							// 当前左指针对应的字符包含在left和right之间，由于需要滑动左指针所以将map和count对应的字符重新计数回来 跳出当前while
+							map[c]++;
+                            // 存在负数的可能性 如果存在多个子串中的字符为负数 可以继续走内部的while
+							if (map[c] > 0) count++;
+						}
+						left++;
+					}
+				}
+				return minLen === Infinity ? '' : s.slice(minStart, minStart + minLen);
+			};
+
+            // right先加后进行内部while 为了right-left直接能获取两个中间的值
+            // map[c] 存在就－1    可能存在负值 表示当前子串中存在多个字符
+
+			// console.log(minWindow('ADOBECODEBANC', 'ABC'));
+
+			var minWindow2 = function (s, t) {
+				// 计数
+				const map = {};
+				for (let c of t) {
+					map[c] = map[c] ? map[c]++ : 1;
+				}
+
+				let count = Object.keys(map).length;
+
+				let minLen = Infinity,
+					minStart = 0;
+				let left = 0,
+					right = 0;
+
+				while (right < s.length) {
+					const c = s[right];
+					if (map[c] !== undefined) {
+						map[c]--;
+                        if(map[c] === 0) count--
+					}
+
+					right++;
+                    while(count === 0){
+                        if(right - left < Infinity){
+                            minLen = right -left;
+                            minStart = left
+                        }
+
+                        const c = s[left]
+                        if(map[c] !== undefined){
+                            map[c]++
+                            if(map[c] > 0) count++
+                        }
+                        left++
+                    }
+				}
+
+                console.log(minStart,minLen)
+
+                return minLen === Infinity ? '' : s.slice(minStart, minStart + minLen);
+			};
+
+			console.log('--->',minWindow2('ADOBECODEBANC', 'ABC'));
+
+
+
+            const lengthOfLongestSubstring = function(s){
+
+                let left = 0, right = 0, maxLength = 0;
+                const set = new Set()
+
+                while(right < s.length){
+                    if(set.has(s[right])){
+                        set.delete(s[left++])
+                    } else {
+                        set.add(s[right++])
+                        maxLength = Math.max(maxLength, set.size)
+                    }
+                }
+                
+                return maxLength
+            }
+
+
+            console.log(lengthOfLongestSubstring('abcabcbb'));
+			console.log(lengthOfLongestSubstring('pwwkew'));
+			console.log(lengthOfLongestSubstring('svva'));
+			console.log(lengthOfLongestSubstring(' '));
+		</script>
+	</body>
+</html>

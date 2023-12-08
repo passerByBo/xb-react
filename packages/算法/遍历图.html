@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+	<body>
+		<script>
+			const graph = {
+				A: ['B', 'C'],
+				B: ['D', 'E'],
+				C: ['F'],
+				D: [],
+				E: ['F', 'A'],
+				F: []
+			};
+			// 深度优先遍历  DFS
+			// 使用记忆优化
+			// O(V+E) 节点数  边数
+
+			function dfsMemoization(graph, start) {
+				const visited = new Set();
+
+				function dfs(node) {
+					if (visited.has(node)) return;
+					visited.add(node);
+					console.log(node);
+
+					for (const neighbor of graph[node]) {
+						dfs(neighbor);
+					}
+				}
+
+				dfs(start);
+			}
+            console.log('--------------------------DFS---------------------------');
+			dfsMemoization(graph, 'A');
+			console.log('--------------------------BFS---------------------------');
+			// 广度优先遍历（BFS）-使用优先队列优化
+			function bfsPriorityQueue(graph, start) {
+				const visited = new Set();
+				const queue = [start];
+
+				while (queue.length > 0) {
+					const node = queue.shift();
+					if (visited.has(node)) continue;
+					visited.add(node);
+					console.log(node);
+					// 如果要做排序可以这里sort一下
+					const neighbors = graph[node];
+					for (let neighbor of neighbors) {
+						queue.push(neighbor);
+					}
+				}
+			}
+
+			bfsPriorityQueue(graph, 'A');
+		</script>
+	</body>
+</html>
